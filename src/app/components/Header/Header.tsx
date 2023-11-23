@@ -12,14 +12,21 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import ThemeToggle from "../ThemeToggle";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
+import { useMediaQuery } from "@mui/material";
 
 const pages = ["Products", "Pricing", "Blog"];
 
-const Header = () => {
+export type HeaderProps = {
+  ColorModeContext: React.Context<{ toggleColorMode: () => void }>;
+};
+
+const Header = (props: HeaderProps) => {
   const { data: session } = useSession();
+  const { ColorModeContext } = props;
   const userProfileImg = session?.user?.image as string;
   const userProfileName = session?.user?.name as string;
 
@@ -44,6 +51,8 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const tabletCheck = useMediaQuery("(min-width: 768px)");
 
   return (
     <AppBar position="static">
@@ -134,9 +143,13 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ pr: 5 }}>
-            <Typography>Signed in as {session?.user?.email}</Typography>
-          </Box>
+          {tabletCheck && (
+            <Box sx={{ pr: 5 }}>
+              <Typography>Signed in as {session?.user?.email}</Typography>
+            </Box>
+          )}
+
+          <ThemeToggle ColorModeContext={ColorModeContext} />
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile Settings">

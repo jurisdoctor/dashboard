@@ -1,8 +1,10 @@
 import "./globals.css";
 
 import { CssBaseline } from "@mui/material";
+import Header from "./components/Header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import ModeProvider from "./theme/providers";
 import Provider from "./context/client-provider";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
@@ -24,8 +26,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CssBaseline />
-        <Provider session={session}>{children}</Provider>
+        <Provider session={session}>
+          <ModeProvider>
+            <CssBaseline />
+            {children}
+          </ModeProvider>
+        </Provider>
       </body>
     </html>
   );

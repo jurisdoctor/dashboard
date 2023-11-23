@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { CssBaseline } from "@mui/material";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Provider from "./context/client-provider";
@@ -23,6 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <CssBaseline />
         <Provider session={session}>{children}</Provider>
       </body>
     </html>

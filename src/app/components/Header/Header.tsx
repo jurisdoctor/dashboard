@@ -53,7 +53,7 @@ const Header = (props: HeaderProps) => {
   const tabletCheck = useMediaQuery('(min-width: 768px)');
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ mb: '2.5rem' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

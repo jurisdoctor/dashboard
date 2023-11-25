@@ -1,19 +1,18 @@
-import "./globals.css";
+import './globals.css';
 
-import { CssBaseline } from "@mui/material";
-import Header from "./components/Header";
-import { Inter } from "next/font/google";
-import type { Metadata } from "next";
-import ModeProvider from "./theme/providers";
-import Provider from "./context/client-provider";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth/next";
+import { CssBaseline } from '@mui/material';
+import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
+import ModeProvider from './theme/providers';
+import Provider from './context/client-provider';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth/next';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "dashboardt",
-  description: "data dashboard",
+  title: 'dashboardt',
+  description: 'data dashboard',
 };
 
 export default async function RootLayout({

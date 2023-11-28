@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { CSSObject, styled } from '@mui/material/styles';
 import {
   Divider,
@@ -18,12 +16,14 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import HomeIcon from '@mui/icons-material/Home';
 import IconButton from '@mui/material/IconButton';
 import NextLink from 'next/link';
 import Person2Icon from '@mui/icons-material/Person2';
 import Settings from '@mui/icons-material/Settings';
 import scss from './SideMenu.module.scss';
 import { signOut } from 'next-auth/react';
+import { useState } from 'react';
 
 const drawerWidth = 240;
 
@@ -48,9 +48,16 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const menuRouteList = ['analytics', 'profile', 'settings', ''];
-const menuListTranslations = ['Anayltics', 'Profile', 'Settings', 'Sign Out'];
+const menuRouteList = ['', 'analytics', 'profile', 'settings', ''];
+const menuListTranslations = [
+  'Home',
+  'Analytics',
+  'Profile',
+  'Settings',
+  'Sign Out',
+];
 const menuListIcons = [
+  <HomeIcon key="home" />,
   <EqualizerIcon key="analytics" />,
   <Person2Icon key="profile" />,
   <Settings key="settings" />,
@@ -59,7 +66,7 @@ const menuListIcons = [
 
 const SideMenu = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const mobileCheck = useMediaQuery('(min-width: 600px)');
 
   const handleToggleDrawer = () => {

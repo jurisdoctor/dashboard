@@ -1,10 +1,8 @@
 .layout {
-  padding: 0 1.5rem 0 5rem;
   margin: auto;
   max-width: 85rem;
 
   @media screen and (min-width: 1700px) {
     max-width: 92rem;
-    padding: 0 1.5rem 0 0;
   }
 }
